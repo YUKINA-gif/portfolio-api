@@ -69,5 +69,21 @@ class SkillSeeder extends Seeder
         DB::table("skills")->insert(
             $param
         );
+
+        $param = [
+            "name" => "Heroku",
+            "skill" => 3,
+        ];
+        DB::table("skills")->insert(
+            $param
+        );
+
+        $param = [
+            "name" => "Netlify",
+            "skill" => 3,
+        ];
+        DB::table("skills")->insert(
+            $param
+        );
     }
 }
