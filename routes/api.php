@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactsController;
+use App\Http\Controllers\PortfoliosController;
+use App\Http\Controllers\SkillsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,7 @@ use App\Http\Controllers\ContactsController;
 */
 
 Route::post("/contact", [ContactsController::class, "sendMail"]);
+Route::get("/portfolio", [PortfoliosController::class, "get"]);
+Route::post("/portfolio", [PortfoliosController::class, "post"]);
+Route::get("/skill", [SkillsController::class, "get"]);
+Route::post("/skill", [SkillsController::class, "post"]);

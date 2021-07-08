@@ -15,6 +15,14 @@ class CreatePortfoliosTable extends Migration
     {
         Schema::create('portfolios', function (Blueprint $table) {
             $table->id();
+            $table->string("name");
+            $table->string("image");
+            $table->string("github_front")->nullable();
+            $table->string("github_api")->nullable();
+            $table->string("created");
+            $table->text("detail");
+            $table->text("difficulties");
+            $table->text("solutions");
             $table->timestamps();
         });
     }
