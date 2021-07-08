@@ -31,7 +31,7 @@ class PortfoliosController extends Controller
      */
     public function get()
     {
-        $ptf = Portfolio::all();
+        $ptf = Portfolio::orderBy('id', 'desc')->get();
 
         if ($ptf) {
             return response()->json([
