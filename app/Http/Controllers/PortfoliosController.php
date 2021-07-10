@@ -89,7 +89,7 @@ class PortfoliosController extends Controller
 
         if ($path && $result) {
             return response()->json([
-                "message" => "Data created successfully"
+                "message" => "Portfolio created successfully"
             ], 200);
         } else {
             return response()->json([
@@ -142,7 +142,7 @@ class PortfoliosController extends Controller
             ], 200);
         } else {
             return response()->json([
-                "message" => "Not found"
+                "message" => "Could not process normally"
             ], 404);
         }
     }
@@ -189,7 +189,7 @@ class PortfoliosController extends Controller
             ], 200);
         } else {
             return response()->json([
-                "message" => "Not found"
+                "message" => "Could not process normally"
             ], 404);
         }
     }
