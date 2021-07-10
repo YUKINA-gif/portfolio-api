@@ -20,5 +20,6 @@ use App\Http\Controllers\SkillsController;
 Route::post("/contact", [ContactsController::class, "sendMail"]);
 Route::get("/portfolio", [PortfoliosController::class, "get"]);
 Route::post("/portfolio", [PortfoliosController::class, "post"]);
+Route::post("/portfolio/image",[PortfoliosController::class, "store_image_update"]);
 Route::get("/skill", [SkillsController::class, "get"]);
 Route::post("/skill", [SkillsController::class, "post"]);
