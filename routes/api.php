@@ -21,5 +21,7 @@ Route::post("/contact", [ContactsController::class, "sendMail"]);
 Route::get("/portfolio", [PortfoliosController::class, "get"]);
 Route::post("/portfolio", [PortfoliosController::class, "post"]);
 Route::post("/portfolio/image",[PortfoliosController::class, "store_image_update"]);
+Route::put("/portfolio", [PortfoliosController::class, "put"]);
+Route::delete("/portfolio", [PortfoliosController::class, "delete"]);
 Route::get("/skill", [SkillsController::class, "get"]);
 Route::post("/skill", [SkillsController::class, "post"]);
