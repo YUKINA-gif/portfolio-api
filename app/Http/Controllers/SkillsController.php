@@ -73,7 +73,7 @@ class SkillsController extends Controller
 
         if ($result) {
             return response()->json([
-                "message" => "Data created successfully"
+                "message" => "Skill created successfully"
             ], 200);
         } else {
             return response()->json([

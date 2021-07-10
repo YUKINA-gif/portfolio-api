@@ -1,62 +1,256 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Portfolio API
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+ポートフォリオの API です
 
-## About Laravel
+## Prerequisites
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+-   PHP 7.4.15
+-   Laravel 8.4
+-   MySQL 8.0
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## API Document
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+[ GET ] 制作物の情報を取得します
 
-## Learning Laravel
+```
+/portfolio
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+レスポンス
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```
+<!-- 200 -->
+{
+  message: Get events successfully,
+  "ptf": [
+  {
+    "id": 4,
+    "name": "FesLive",
+    "image": "feslive.png",
+    "github_front": "https://github.com/YUKINA-gif/FesLive.git",
+    "github_api": "https://github.com/YUKINA-gif/FesLive-api.git",
+    "created": "7日",
+    "detail": "趣味でイベント情報の収集を面倒に感じていたため、自分でアプリを作ることにしました。",
+    "difficulties": "Twitter APIを使ったのですが、申請から利用までが初めてだったのでどのような機能があるか一から知ることに苦労しました。",
+    "solutions": "まずはどのような機能があるかAPIをさわってから設計することで楽になり、情報収集も楽になりました。時間を取りつつ機能を足していく予定です！",
+  }],
+}
 
-## Laravel Sponsors
+<!-- 404 -->
+{
+  "message" : "Not found"
+}
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+[ POST ] 制作物の情報を登録します
 
-### Premium Partners
+```
+/portfolio
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
+リクエスト
 
-## Contributing
+```
+{
+  "name": "event name",
+  "image": "portfolio-image.jpg",
+  "detail":"制作物の説明です",
+  "created": "7日",
+  "guthub_front":"https://github.com/YUKINA-gif/〇〇.git",
+  "guthub_api":"https://github.com/YUKINA-gif/〇〇.git",
+  "difficulties" : "制作物の苦労した点を記載します",
+  "solutions" : "苦労した点の解決方法を記載します"
+}
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+レスポンス
 
-## Code of Conduct
+```
+<!-- 200 -->
+{
+  "message": "Portfolio updated successfully"
+}
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+<!-- 404 -->
+{
+  "message" : "Could not process normally"
+}
+```
 
-## Security Vulnerabilities
+[ POST ] 制作物の画像を更新します
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```
+/portfolio
+```
 
-## License
+リクエスト
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```
+{
+  "id" : "3",
+  "image": "portfolio-image.jpg"
+}
+```
+
+レスポンス
+
+```
+<!-- 200 -->
+{
+  "message": "Portfolio image updated successfully"
+}
+
+<!-- 404 -->
+{
+  "message" : "Could not process normally"
+}
+
+```
+
+[ PUT ] 制作物情報を更新します
+
+```
+/portfolio
+```
+
+リクエスト
+
+```
+{
+  "id" : "5",
+  "name": "event name",
+  "image": "portfolio-image.jpg",
+  "detail":"制作物の説明です",
+  "created": "7日",
+  "guthub_front":"https://github.com/YUKINA-gif/〇〇.git",
+  "guthub_api":"https://github.com/YUKINA-gif/〇〇.git",
+  "difficulties" : "制作物の苦労した点を記載します",
+  "solutions" : "苦労した点の解決方法を記載します" "name": "event update name",
+  "tw_account": "EVENT_UPDATE_ACCOUNT",
+  "image":"https://pbs.twimg.com/profile_images/〇〇〇.jpg",
+  "address": event update address,
+  "event_start_date":2021-09-20,
+  "event_last_date":2021-09-21,
+}
+```
+
+レスポンス
+
+```
+<!-- 200 -->
+{
+  "message": "Portfolio updated successfully"
+}
+
+<!-- 404 -->
+{
+  "message" : "Could not process normally"
+}
+```
+
+[ DELETE ] 制作物情報を削除します
+
+```
+/portfolio
+```
+
+リクエスト
+
+```
+{
+  "id" : "5"
+}
+```
+
+レスポンス
+
+```
+<!-- 200 -->
+{
+  "message": "Portfolio deleted successfully"
+}
+
+<!-- 404 -->
+{
+  "message" : "Not found"
+}
+```
+
+[ GET ] スキルデータ取得
+
+```
+/skill
+```
+
+レスポンス
+
+```
+<!-- 200 -->
+{
+  "skill": [
+  {
+    "id": 1,
+    "name": "HTML",
+    "skill": 5,
+  },
+}
+
+<!-- 404 -->
+{
+  "message" : "Not found"
+}
+```
+
+[ POST ] スキルデータ登録
+
+```
+/skill
+```
+
+リクエスト
+
+```
+{
+  "name" : "スキル名",
+  "skill": 4
+}
+```
+
+レスポンス
+
+```
+<!-- 200 -->
+{
+  "message" : "Skill created successfully"
+}
+
+<!-- 404 -->
+{
+  "message" : "Could not process normally"
+}
+```
+
+[ POST ] お問い合わせメール送信
+
+```
+/contact
+```
+
+リクエスト
+
+```
+{
+  "name" : "名前",
+  "email": "test@example.com",
+  "test" : "お問い合わせ内容"
+}
+```
+
+レスポンス
+
+```
+<!-- 200 -->
+{
+  "message" : "Mail Send"
+}
+```

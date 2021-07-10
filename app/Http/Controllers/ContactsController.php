@@ -12,7 +12,7 @@ class ContactsController extends Controller
     {
         $request->validate([
             "name" => ["required", "string"],
-            "email" => ["required","email"],
+            "email" => ["required", "email"],
             "text" => ["required", "string"]
         ]);
         $name = $request->name;
@@ -20,5 +20,9 @@ class ContactsController extends Controller
         $text = $request->text;
 
         Mail::to("yukina-nakanishi@outlook.jp")->send(new ContactMail($name, $email, $text));
+
+        return response()->json([
+            "message" => "Mail Send"
+        ], 200);
     }
 }
