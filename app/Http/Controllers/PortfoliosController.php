@@ -163,13 +163,12 @@ class PortfoliosController extends Controller
         // バリデーション設定
         $request->validate([
             "name" => ["required", "string"],
-            "image" => ["required", "image"],
             "github_front" => ["required", "string"],
             "github_api" => ["required", "string"],
-            "created" => ["required", "text"],
-            "detail" => ["required", "text"],
-            "difficulties" => ["required", "text"],
-            "solutions" => ["required", "text"],
+            "created" => ["required", "string"],
+            "detail" => ["required", "string"],
+            "difficulties" => ["required", "string"],
+            "solutions" => ["required", "string"],
         ]);
 
         $items = [
