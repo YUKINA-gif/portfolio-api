@@ -72,5 +72,20 @@ class PortfolioSeeder extends Seeder
         DB::table("portfolios")->insert(
             $param
         );
+
+        $param = [
+            "name" => "Portfolio",
+            "image" => "	A3pJgzKg2f3jqkRugOLZvxnHRcvmhMHGNcPb91UJ.png",
+            "github_front" => "https://github.com/YUKINA-gif/portfolio.git",
+            "github_api" => "https://github.com/YUKINA-gif/portfolio-api.git",
+            "created" => "4日",
+            "url" => "https://yukina-nakanishis-portfolio.netlify.app",
+            "detail" => "制作物をまとめるために作成しました。",
+            "difficulties" => "データベースのスキルデータをグラフに反映できず苦労した。",
+            "solutions" => "axiosでデータベースに反映している記事と、Chart.jsの公式リファレンスを見比べてコード解析しながら解決できました。"
+        ];
+        DB::table("portfolios")->insert(
+            $param
+        );
     }
 }
