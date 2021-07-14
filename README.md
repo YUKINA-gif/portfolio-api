@@ -2,11 +2,51 @@
 
 ポートフォリオの API です
 
-## Prerequisites
+## バージョン
 
 -   PHP 7.4.15
 -   Laravel 8.4
 -   MySQL 8.0
+
+## テーブル設計
+|portfolios  |　|　|　|　|　|
+| --- | --- |--- |--- |--- |--- |
+| カラム名 | 型 | PRIMARY KEY |UNIQUE KEY |NOT NULL |FOREIGN KEY |
+| id | unsigned bigint |○ | |○ | |
+| name | varchar | ||○| | |
+| image | varchar | ||○| | |
+| github_front | varchar | ||| | |
+| github_api | varchar | ||| | |
+| created | varchar | ||○| | |
+| url | varchar | ||○| | |
+| detail | varchar | ||○| | |
+| difficulties | varchar | ||○| | |
+| solutions | varchar | ||○| | |
+| created_at | timestamp | ||| | |
+| updated_at | timestamp | ||| | |
+
+|skills  |　|　|　|　|　|
+| --- | --- |--- |--- |--- |--- |
+| カラム名 | 型 | PRIMARY KEY |UNIQUE KEY |NOT NULL |FOREIGN KEY |
+| id | unsigned bigint |○ | |○ | |
+| name | varchar | ||○| | |
+| skill | int | ||○| | |
+| created_at | timestamp | ||| | |
+| updated_at | timestamp | ||| | |
+
+
+
+## API設計
+| パス | メソッド | リクエストボディ |クエリパラメータ |パスパラメータ |概要 |
+| --- | --- |--- |--- |--- |--- |
+| /api/contact | POST |name,email,text | | |お問い合わせメール送信 |
+| /api/portfolio | GET | | |  |制作物情報取得 |
+| /api/portfolio | POST |name,image,git_front,git_api,created,url,detail,difficulties,solutions || |制作物登録 |
+| /api/portfolio | PUT |name,image,git_front,git_api,created,url,detail,difficulties,solutions || |制作物更新 |
+| /api/portfolio | DELETE |id || |制作物削除 |
+| /api/portfolio/image | POST |image || |制作物画像更新 |
+| /api/skill | GET | || | スキル情報取得|
+| /api/skill | POST |name,skill || | スキル登録|
 
 ## API Document
 
