@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PortfolioRequest;
 use App\Models\Portfolio;
 use Illuminate\Support\Facades\Storage;
 
@@ -50,28 +51,15 @@ class PortfoliosController extends Controller
      * ポートフォリオデータ登録
      * 
      * @access public
-     * @param Request $request リクエストパラメータ
+     * @param PortfolioRequest $request リクエストパラメータ
      * @return Response ポートフォリオデータ登録
      * @var array $ptf  新規レコード
      * @var image $image 画像(リクエスト)
      * @var string $path $imageをS3に保存しパスを取得
      * @var array $result 保存結果
      */
-    public function post(Request $request)
+    public function post(PortfolioRequest $request)
     {
-        // バリデーション設定
-        $request->validate([
-            "name" => ["required", "string"],
-            "image" => ["required", "image"],
-            "github_front" => ["required", "string"],
-            "github_api" => ["required", "string"],
-            "created" => ["required", "string"],
-            "url" => ["required", "string"],
-            "detail" => ["required", "string"],
-            "difficulties" => ["required", "string"],
-            "solutions" => ["required", "string"],
-        ]);
-
         $image = $request->image;
         // S3に画像を保存
         $path = Storage::disk('s3')->putFile('/', $image, 'public');
@@ -155,25 +143,13 @@ class PortfoliosController extends Controller
      * ポートフォリオ情報を更新する
      * 
      * @access public
-     * @param Request $request  リクエストパラメータ
+     * @param PortfolioRequest $request  リクエストパラメータ
      * @return Response ポートフォリオ更新
      * @var array $items ポートフォリオデータ(リクエスト)
      * @var array $result_update ポートフォリオデータ(リクエスト)をDBへ更新
      */
-    public function put(Request $request)
+    public function put(PortfolioRequest $request)
     {
-        // バリデーション設定
-        $request->validate([
-            "name" => ["required", "string"],
-            "github_front" => ["required", "string"],
-            "github_api" => ["required", "string"],
-            "created" => ["required", "string"],
-            "url" => ["required", "string"],
-            "detail" => ["required", "string"],
-            "difficulties" => ["required", "string"],
-            "solutions" => ["required", "string"],
-        ]);
-
         $items = [
             "name" => $request->name,
             "github_front" => $request->github_front,

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Skill;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\SkillRequest;
 
 /**
  * [API]スキルデータ class
@@ -52,19 +52,13 @@ class SkillsController extends Controller
      * スキルデータ登録
      * 
      * @access public
-     * @param Request $request リクエストパラメータ
+     * @param SkillRequest $request リクエストパラメータ
      * @return Response スキルデータ登録
      * @var array $skill  新規レコード
      * @var array $result 保存結果
      */
-    public function post(Request $request)
+    public function post(SkillRequest $request)
     {
-        // バリデーション設定
-        $request->validate([
-            "name" => ["required", "string"],
-            "skill" => ["required", "numeric"],
-        ]);
-
         $skill = new Skill();
         $result = $skill->fill([
             "name" => $request->name,
